@@ -4,11 +4,11 @@
 <head>
 	<meta charset="utf-8">
 	<link href="css/menu.css" rel="stylesheet">
-	
-	
+
+
 	<h1 align="center"> Water Calendar </h1>
 		<style type = "text/css">
-		
+
 			ul {list-style-type: none;}
 			body {font-family: Verdana, sans-serif;}
 			/* Month header */
@@ -67,7 +67,7 @@
 				margin-bottom: 5px;
 				font-size:12px;
 				color:#777;
-				
+
 				border: 1px solid black;
 			}
 			/* Highlight the "current" day */
@@ -76,31 +76,33 @@
 				background: #094c31;
 				color: white !important
 			}
-			
-			table, th, td { 
-				
+
+			table, th, td {
+
 			}
-		
+
 		</style>
 </head>
 
 <body>
-	
+
   <!-- title of page -->
 	<div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="home.html">Main Page</a>
+		<a href="index.html">Main Page</a>
 		<a href="watercalendar.html">Water Calendar</a>
+		<a href="addPlant.html">Add Plant</a>
 		<a href="mygarden.html">My Garden</a>
 		<a href="login.html">Sign out</a>
 	</div>
 	<span style="font-size:30px;cursor:pointer;position:absolute;top:0;right:0;" onclick="openNav()">&#9776; Menu</span>
 	<script src="js/menu.js"></script>
-	
-	<h3>Select a month</h3>
+
+	<h3>Monthly View</h3>
 	<select name="example">
-    <option value="A">January </option>
-    <option value="B">February</option>
+    <option value="A">Daily View </option>
+    <option value="B">Weekly View</option>
+		<!--
     <option value="C">March</option>
 	<option value="D">April </option>
     <option value="E">May</option>
@@ -111,11 +113,12 @@
 	<option value="J">October </option>
     <option value="K">November</option>
     <option value="L">December</option>
+	-->
 </select>
 
 
-	
-	<div class="month"> 
+
+	<div class="month">
 		  <ul>
 			<li class="prev">&#10094;</li>
 			<li class="next">&#10095;</li>
@@ -137,9 +140,9 @@
 		  <li>Sat</li>
 		</ul>
 		<!-- </ul> -->
-		
-		
-		<ul class="days"> 
+
+
+		<ul class="days">
 		  <li><span class="active">1</span></li>
 		  <li>2</li>
 		  <li>3</li>
