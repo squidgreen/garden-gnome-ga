@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Water Calendar - Garden Gnome</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="css/testcal2.css" />
+  </head>
+  <body>
+    <h1>Water Calendar</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-4" style="border: 1px solid red">
+          <small>5 Sun</small>
+          <ul>
+            <li> Tulips </li>
+          </ul>
+        </div>
+        <div class="col-4" style="border: 1px solid red">
+          <small>6 Mon</small>
+          <ul>
+            <li> Roses </li>
+          </ul>
+        </div>
+        <div class="col-4" style="border: 1px solid red">
+          <small>7 Tue</small>
+          <ul>
+            <li> Amaranths </li>
+            <li> Iris </li>
+            <li> Iris </li>
+          </ul>
+        </div>
+        <div class="col-4" style="border: 1px solid red">
+          <small>8 Wed</small>
+          <ul>
+            <li> Tulips </li>
+            <li> Mango Tree </li>
+            <li> Orchids </li>
+          </ul>
+        </div>
+        <div class="col-4" style="border: 1px solid red">
+          <small>9 Thrs</small>
+          <ul>
+            <li> Tulips </li>
+            <li> Daisies </li>
+            <li> Aloe Vera </li>
+          </ul>
+        </div>
+        <div class="col-4" style="border: 1px solid red">
+          <small>10 Fri</small>
+          <ul>
+            <li> Tulips </li>
+          </ul>
+        </div>
+        <div class="col-4" style="border: 1px solid red">
+          <small>11 Sat</small>
+          <ul>
+            <li> Tulips </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <button id="addWateringReminderBtn" class="btn btn-primary" data-toggle="modal" data-target="#addReminderModal">
+      Add Reminder
+    </button>
+
+    <!-- Modal -->
+    <!-- TODO role and other aria attributes -->
+    <div class="modal fade" id="addReminderModal" tabindex="-1" role="dialog" aria-labelledby="addReminderModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <!-- Begin modal content -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="addReminderModalLabel">Add a new watering reminder</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Form for adding new plant watering reminder -->
+            <div class="container">
+              <form>
+                <div class="form-group">
+                  <label for="plantNameReminderModalEntry">Plant name</label>
+                  <input type="text" class="form-control" id="plantNameReminderModalEntry" aria-describedby="plantName" placeholder="Enter name" />
+                </div>
+                <div class="form-group">
+                  <select class="custom-select" id="repeatFrequencySelector">
+                    <option selected>Choose when to water</option>
+                    <option value="daily">Daily</option>
+                    <option value="sunday">Sundays</option>
+                    <option value="monday">Mondays</option>
+                    <option value="tuesday">Tuesdays</option>
+                    <option value="wednesday">Wednesdays</option>
+                    <option value="thursday">Thursdays</option>
+                    <option value="friday">Fridays</option>
+                    <option value="saturday">Saturdays</option>
+                    <option value="Monthly">Monthly</option>
+                  </select>
+                </div>
+                <div class="container">
+                  <button type="submit" class="btn btn-success">Save</button>
+                  <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- End modal content -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="js/watercalendar.js"></script>
+  </body>
+</html>
