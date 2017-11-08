@@ -1,8 +1,20 @@
 <!doctype html>
 <html>
 	<head>
+<style>
+table, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td{
+	padding: 15px;
+	text-align: left;
+	vertical-align: top;
+}
+</style>	
 		<title>My Garden</title>
 		<link href="css/menu.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/home.css">
 	</head>
 	<body>
 		<h1 style="text-align:center;">My Garden</h1>
@@ -17,6 +29,41 @@
 		</div>
 
 	<span style="font-size:30px;cursor:pointer;position:absolute;top:0;right:0;" onclick="openNav()">&#9776; Menu</span>
+
+	<table style="width:100%;">
+		<tr>
+			<td width="10%"><img width="200" height="200" src="image/tulips.jpg" alt="tulips"></td>
+			<td width="90%">
+				<span style="margin-top:0px;margin-left:20px;font-size:50px">TULIP</span>
+				<span style="font-size:30px;border-style:solid;position:absolute;right:5%;" onclick="openNav()">Location</span>
+			</td>
+		</tr>
+		<tr>
+			<td width="10%"><img width="200" height="200" src="image/AppleTree.jpg" alt="tulips"></td>
+			<td width="90%">
+				<span style="margin-top:0px;margin-left:20px;font-size:50px;">FUJI APPLE</span>
+				<span style="font-size:30px;border-style:solid;position:absolute;right:5%;" onclick="openNav()">Location</span>
+				<br><span style="margin-top:0px;margin-left:20px;font-size:50px;">GRANNY SMITH</span>
+				<span style="font-size:30px;border-style:solid;position:absolute;right:5%;margin-top:-10px;" onclick="openNav()">Location</span>
+
+				<br><span style="margin-top:0px;margin-left:20px;font-size:50px;">RED DELICIOUS</span>
+				<span style="font-size:30px;border-style:solid;position:absolute;right:5%;margin-top:-10px;" onclick="openNav()">Location</span>
+
+			</td>
+		</tr>
+		<tr>
+			<td width="10%"><img width="200" height="200" src="image/Orchid.jpg" alt="orchid"></td>
+			<td width="90%">
+				<span style="font-size:50px;margin-top:0px;margin-left:20px;">Orchid</span>
+				<span style="font-size:30px;border-style:solid;position:absolute;right:5%;" onclick="openNav()">Location</span>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align:center;"><span style="font-size:50px;">Add New Plant</span></td>
+		</tr>
+
+
+	</table>
 	<script src="js/menu.js"></script>
 	</body>
 </html>
