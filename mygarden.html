@@ -40,32 +40,32 @@ td{
 
 	<span style="font-size:30px;cursor:pointer;position:absolute;top:0;right:0;" onclick="openNav()">&#9776; Menu</span>
 
-	<table style="width:100%;">
+	<table style="width:100%;margin-top:50px;">
 		<tr>
 			<td width="10%"><img width="200" height="200" src="image/tulips.jpg" alt="tulips"></td>
 			<td width="90%">
 				<span style="margin-top:0px;margin-left:20px;font-size:50px">TULIP</span>
-				<span style="font-size:30px;border-style:solid;position:absolute;right:5%;" onclick="openNav()">Location</span>
+				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
 			</td>
 		</tr>
 		<tr>
 			<td width="10%"><img width="200" height="200" src="image/AppleTree.jpg" alt="tulips"></td>
 			<td width="90%">
 				<span style="margin-top:0px;margin-left:20px;font-size:50px;">FUJI APPLE</span>
-				<span style="font-size:30px;border-style:solid;position:absolute;right:5%;" onclick="openNav()">Location</span>
+				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
 				<br><span style="margin-top:0px;margin-left:20px;font-size:50px;">GRANNY SMITH</span>
-				<span style="font-size:30px;border-style:solid;position:absolute;right:5%;margin-top:-10px;" onclick="openNav()">Location</span>
+				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
 
 				<br><span style="margin-top:0px;margin-left:20px;font-size:50px;">RED DELICIOUS</span>
-				<span style="font-size:30px;border-style:solid;position:absolute;right:5%;margin-top:-10px;" onclick="openNav()">Location</span>
+				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
 
 			</td>
 		</tr>
 		<tr>
 			<td width="10%"><img width="200" height="200" src="image/Orchid.jpg" alt="orchid"></td>
 			<td width="90%">
-				<span style="font-size:50px;margin-top:0px;margin-left:20px;">Orchid</span>
-				<span style="font-size:30px;border-style:solid;position:absolute;right:5%;" onclick="openNav()">Location</span>
+				<a style="font-size:50px;margin-top:0px;margin-left:20px;" href="mygardenbio.html">Orchid</a>
+				<button id="#showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
 			</td>
 		</tr>
 
@@ -108,6 +108,17 @@ td{
               </form>
             </div>
           </div>
+          <!-- End modal content -->
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="modal fade" id="location" tabindex="-1" role="dialog" aria-labelledby="addMyGardenModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <!-- Begin modal content -->
+          <h1>Near dog house</h1>
           <!-- End modal content -->
         </div>
       </div>
