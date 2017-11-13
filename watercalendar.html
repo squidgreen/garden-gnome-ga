@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="css/home.css" />
 	<link rel="stylesheet" href="css/cal.css" />
 	<link href="css/menu.css" rel="stylesheet">
+	<link href="css/testcal2.css" rel="stylesheet">
 </head>
 
 <body>
@@ -93,7 +94,7 @@
 	</div>
 
 	<div id="button" >
-		<button type="button" class="button btn-primary" data-toggle="modal" data-target="#addReminderModal" style="margin-top:10px;">
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addReminderModal" style="margin-top:10px;">
 			Add New Plant
 		</button>
 	</div>
@@ -112,21 +113,25 @@
 					</button>
 				</div>
 				<div class="modal-body">
+
 					<!-- Form for adding new plant watering reminder -->
 					<div class="container">
-						<form action="testcal2.html" method="get">
+						<form id="setReminderForm" novalidate>
 							<div class="form-group">
 								<label for="plantNameReminderModalEntry">
 									Plant name
 								</label>
-								<input type="text" class="form-control" name="plantName" id="plantNameReminderModalEntry" aria-describedby="plantName" placeholder="Enter name" />
+								<input type="text" class="form-control" name="plantName" id="plantNameReminderModalEntry" aria-describedby="plantName" placeholder="Enter name" required/>
+								<div class="invalid-feedback">
+									Be sure to enter a name for the plant above
+								</div>
 							</div>
 							<div class="form-group">
 								<label for="dateModalEntry">Date</label>
-								<input id="dateModalEntry" type="number" placeholder="1" min="1" max="30" />
+								<input id="dateModalEntry" class="form-control" type="number" placeholder="Default: 1" value="1" min="1" max="30" required/>
 							</div>
 							<div class="form-group">
-								<select class="custom-select" name="repeatChoice" id="repeatFrequencySelector">
+								<select class="custom-select" name="repeatChoice" id="repeatFrequencySelector" required>
 									<option selected>Choose how often to water</option>
 									<option value="1">Daily</option>
 									<option value="2">Every 2 days</option>
@@ -138,7 +143,7 @@
 								</select>
 							</div>
 							<div class="container">
-								<button type="button" class="btn btn-success" onclick="eatWaterReminderInput()" data-dismiss="modal">
+								<button id="submitReminderFormBtn" type="submit" class="btn btn-success" onclick="eatWaterReminderInput()">
 									Save
 								</button>
 								<button type="button" class="btn" data-dismiss="modal">
@@ -146,6 +151,7 @@
 								</button>
 							</div>
 						</form>
+
 					</div>
 				</div>
 				<!-- End modal content -->
