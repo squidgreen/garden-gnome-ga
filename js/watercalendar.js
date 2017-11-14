@@ -102,17 +102,9 @@ function getDaysInMonth(month) {
   if (month == 1) { // february
     return 28; // who cares about leap years in 2017
   } else if (month <= 6) {
-    if (month % 2 == 0) {
-      return 31;
-    } else {
-      return 30;
-    }
+    return (month % 2) == 0 ? 31 : 30;
   } else {
-    if (month % 2 == 0) {
-      return 30;
-    } else {
-      return 31;
-    }
+    return (month % 2) == 0 ? 30 : 31;
   }
 }
 
