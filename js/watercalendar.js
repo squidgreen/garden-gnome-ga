@@ -53,6 +53,77 @@ function eatWaterReminderInput(event) {
   }
 }
 
+/**
+ * Populates the water calendar on watercalendar.html based on the current date.
+ */
+(function populateCalendar() {
+  //console.log(cal);
+  // To start at the beginning of each month when displaying calendar
+  var currentDateObj = new Date();
+  var dateObj = new Date(currentDateObj.getFullYear(), currentDateObj.getMonth());
+
+  var month = dateObj.getMonth();
+  var daysInMonth = getDaysInMonth(month);
+
+  var frag = document.createDocumentFragment(); // append to "cal" when done creating children
+
+  // Create elements here and clone them for efficieny
+  var newDateEntryDivElem = document.createElement('div');
+  var strongElem = document.createElement('strong');
+  var ulElem = document.createElement('ul');
+  var strongClone;
+  var divClone;
+  var ulClone;
+
+  var cal = document.getElementById('calendar');
+
+  var daysOfWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+  //console.log("1st of month falls on a " + dateObj.getDay());
+  //var startWeekDay = daysOfWeek[dateObj.getDay()];
+  //console.log(startWeekDay);
+
+  for (var i = 0; i < daysInMonth; i++) {
+    // two counters. one for which day of the week we're stamping and one for
+    // the numerical date
+    //var dateContent = document.createElement('strong');
+    var text = daysOfWeek[(dateObj.getDay() + i) % 7] + " " + (i + 1);
+    console.log(text);
+    var dateText = document.createTextNode(text);
+
+    strongClone = strongElem.cloneNode();
+    strongClone.appendChild(dateText);
+
+    //var newDateEntry = document.createElement("div");
+    divClone = newDateEntryDivElem.cloneNode();
+    divClone.className = 'col';
+    ulClone = ulElem.cloneNode();
+
+    divClone.appendChild(strongClone);
+    divClone.appendChild(ulClone);
+    frag.appendChild(divClone);
+  }
+  cal.appendChild(frag);
+
+})();
+
+function getDaysInMonth(month) {
+  if (month == 1) { // february
+    return 28; // who cares about leap years in 2017
+  } else if (month <= 6) {
+    if (month % 2 == 0) {
+      return 31;
+    } else {
+      return 30;
+    }
+  } else {
+    if (month % 2 == 0) {
+      return 30;
+    } else {
+      return 31;
+    }
+  }
+}
+
 /*
 function switchToDayView() {
   document.location.href = "dayview.html/?";
