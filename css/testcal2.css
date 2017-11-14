@@ -11,3 +11,11 @@ ul {
     right: 10px;
     bottom: 10px;
 }
+
+form {
+  font-size: 12px;
+}
+
+.col {
+    border-radius: 5px;
+}
