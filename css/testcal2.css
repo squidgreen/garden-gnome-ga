@@ -13,13 +13,10 @@ ul {
 }
 
 #addWateringReminderBtn {
-  position: relative;
-  margin-top: 90%;
-  /*
+  position: fixed;
   right: 10px;
   bottom: 10px;
   z-index: 1;
-  */
 }
 
 form {
@@ -39,6 +36,8 @@ form {
     position: fixed;
     z-index: 1;
     background-color: rgb(98, 186, 124);
+/*    border-bottom-left-radius: 0.5em; uncomment to round the bottom edges of header
+    border-bottom-right-radius: 0.5em;*/
     color: white;
 /*    -webkit-text-stroke-color: black;
     -webkit-text-stroke-width: 0.5px; */
