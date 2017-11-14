@@ -1,7 +1,10 @@
+/*
 $(document).ready(function() {
   var reminderForm = document.getElementById('setReminderForm');
   reminderForm.addEventListener('submit', eatWaterReminderInput);
 });
+*/
+document.getElementById("submitReminderFormBtn").onclick("eatWaterReminderInput");
 
 $('addReminderModal').on('loaded.bs.modal', function(event) {
   console.log('was this called?');
@@ -12,8 +15,8 @@ $('addReminderModal').on('shown.bs.modal', function(event) {
 })
 
 function eatWaterReminderInput(event) {
-  event.preventDefault(); // Don't actually submit the form
-  console.log("eating");
+  //event.preventDefault(); // Don't actually submit the form
+  console.log(new Date().getMonth() + 1);
   // Add the new plant reminder to the calendar
   var plantName = ""; // Reset field
   var plantName =
@@ -40,9 +43,13 @@ function eatWaterReminderInput(event) {
 
   if (plantName != "") {
     console.log('hiding');
-    var modalll = document.getElementById('addReminderModal');
-    console.log(Object.getOwnPropertyNames(modalll));
-    modalll.modal('toggle');
+    var foo = document.getElementById('addReminderModal');
+    $('#addReminderModal').modal('hide');
+    //foo.modal('hide');
+    console.log(foo);
+    console.log($('#addReminderModal'));
+ //   console.log(Object.getOwnPropertyNames(modalll));
+//    modalll.modal('hide');
   }
 }
 
