@@ -12,6 +12,475 @@
 	<link rel="stylesheet" href="css/home.css" />
 	<link rel="stylesheet" href="css/cal.css" />
 	<link href="css/menu.css" rel="stylesheet">
+
+
+	<h1 align="center"> Water Calendar </h1>
+	<style type = "text/css">
+	ul {list-style-type: none;}
+	body {font-family: Verdana,
+		sans-serif;}
+		/* Month header
+		* */
+		.month
+		{
+			padding:
+			70px
+			25px;
+			width:
+			100%;
+			background:
+			#094c31;
+			text-align:
+			center;
+		}
+		/* Month
+		* list
+		* */
+		.month
+		ul
+		{
+			margin:
+			0;
+			padding:
+			0;
+		}
+		.month
+		ul
+		li
+		{
+			color:
+			white;
+			font-size:
+			20px;
+			text-transform:
+			uppercase;
+			letter-spacing:
+			3px;
+		}
+		/* Previous
+		* button
+		* inside
+		* month
+		* header
+		* */
+		.month
+		.prev
+		{
+			float:
+			left;
+			padding-top:
+			10px;
+		}
+		/* Next
+		* button
+		* */
+		.month
+		.next
+		{
+			float:
+			right;
+			padding-top:
+			10px;
+		}
+		/* Weekdays
+		* (Mon-Sun)
+		* */
+		.weekdays
+		{
+			margin:
+			0;
+			padding:
+			10px
+			0;
+			background-color:#dde;
+		}
+		.weekdays
+		li
+		{
+			display:
+			inline-block;
+			width:
+			13.6%;
+			color:
+			#666;
+			text-align:
+			center;
+		}
+		/* Days
+		* (1-31)
+		* */
+		.days
+		{
+			padding:
+			10px
+			0;
+			background:
+			#eee;
+			margin:
+			0;
+		}
+		.days
+		li
+		{
+			list-style-type:
+			none;
+			display:
+			inline-block;
+			width:
+			13.6%;
+			text-align:
+			center;
+			margin-bottom:
+			5px;
+			font-size:12px;
+			color:#777;
+		}
+		/* Highlight
+		* the
+		* "current"
+		* day
+		* */
+		.days
+		li
+		.active
+		{
+			padding:
+			5px;
+			background:
+			#094c31;
+			color:
+			white
+			!important
+		}
+		table,
+		th,
+		td
+		{
+		}
+		.col
+		{
+			border:
+			1px
+			solid
+			black;
+		}
+		</style>
+	</head>
+
+	<body>
+
+		<!--
+		title
+		of
+		page
+	-->
+	<div
+	id="mySidenav"
+	class="sidenav">
+	<a
+	href="javascript:void(0)"
+	class="closebtn"
+	onclick="closeNav()">&times;</a>
+	<a
+	href="home.html">Main
+	Page</a>
+	<a
+	href="watercalendar.html">Water
+	Calendar</a>
+	<a
+	href="mygarden.html">My
+	Garden</a>
+	<a
+	href="index.html">Sign
+	out</a>
+</div>
+<span
+style="font-size:30px;cursor:pointer;position:absolute;top:0;right:0;"
+onclick="openNav()">&#9776;
+Menu</span>
+<script
+src="js/menu.js"></script>
+
+<div
+class="container">
+<div
+class="col-align-items-normal"
+id="calendar">
+<div
+class="col">
+Sun
+<br
+/>
+1
+<ul>
+
+</ul>
+</div>
+
+<div
+class="col">
+Mon
+<br
+/>
+2
+<ul>
+
+</ul>
+</div>
+
+<div
+class="col">
+Tues
+<br
+/>
+3
+<ul>
+
+</ul>
+</div>
+
+<div
+class="col">
+Wed
+<br
+/>
+4
+<ul>
+
+</ul>
+</div>
+
+<div
+class="col">
+Thurs
+<br
+/>
+5
+<ul>
+
+</ul>
+</div>
+
+<div
+class="col">
+Fri
+<br
+/>
+6
+<ul>
+
+</ul>
+</div>
+
+<div
+class="col">
+Sat
+<br
+/>
+7
+<ul>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div
+id="button"
+>
+<button
+type="button"
+class="button
+btn-primary"
+data-toggle="modal"
+data-target="#addReminderModal"
+style="margin-top:10px;">Add
+New
+Plant</button>
+</div>
+
+<!--
+Modal
+-->
+<!--
+TODO
+role
+and
+other
+aria
+attributes
+-->
+<div
+class="modal
+fade"
+id="addReminderModal"
+tabindex="-1"
+role="dialog"
+aria-labelledby="addReminderModalLabel"
+aria-hidden="true">
+<div
+class="modal-dialog"
+role="document">
+<div
+class="modal-content">
+<!--
+Begin
+modal
+content
+-->
+<div
+class="modal-header">
+<h5
+class="modal-title"
+id="addReminderModalLabel">Add
+a
+new
+watering
+reminder</h5>
+<button
+type="button"
+class="close"
+data-dismiss="modal"
+aria-label="Close">
+<span
+aria-hidden="true">&times;</span>
+</button>
+</div>
+<div
+class="modal-body">
+<!--
+Form
+for
+adding
+new
+plant
+watering
+reminder
+-->
+<div
+class="container">
+<form
+action="testcal2.html"
+method="get">
+<div
+class="form-group">
+<label
+for="plantNameReminderModalEntry">Plant
+name</label>
+<input
+type="text"
+class="form-control"
+name="plantName"
+id="plantNameReminderModalEntry"
+aria-describedby="plantName"
+placeholder="Enter
+ name"
+/>
+</div>
+<div
+class="form-group">
+<label
+for="dateModalEntry">Date</label>
+<input
+id="dateModalEntry"
+type="number"
+placeholder="1"
+min="1"
+max="30"
+/>
+</div>
+<div
+class="form-group">
+<select
+class="custom-select"
+name="repeatChoice"
+id="repeatFrequencySelector">
+<option
+selected>Choose
+how
+often
+to
+water</option>
+<option
+value="1">Daily</option>
+<option
+value="2">Every
+2
+days</option>
+<option
+value="3">Every
+3
+days</option>
+<option
+value="4">Every
+4
+days</option>
+<option
+value="5">Every
+5
+days</option>
+<option
+value="6">Every
+6
+days</option>
+<option
+value="7">Every
+7
+days</option>
+</select>
+</div>
+<div
+class="container">
+<button
+type="button"
+class="btn
+btn-success"
+onclick="eatWaterReminderInput()"
+data-dismiss="modal">Save</button>
+<button
+type="button"
+class="btn"
+data-dismiss="modal">Cancel</button>
+</div>
+</form>
+</div>
+</div>
+<!--
+End
+modal
+content
+-->
+</div>
+</div>
+</div>
+<!--
+Optional
+JavaScript
+-->
+<!--
+jQuery
+first,
+then
+Popper.js,
+then
+Bootstrap
+JS
+-->
+<script
+src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+crossorigin="anonymous"></script>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+crossorigin="anonymous"></script>
+<script
+src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+crossorigin="anonymous"></script>
+<script
+src="js/watercalendar.js"/></script>
+
 	<link href="css/testcal2.css" rel="stylesheet">
 </head>
 
@@ -165,5 +634,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 	<script src="js/watercalendar.js"></script>
 	<script src="js/menu.js"></script>
+
 </body>
 </html>
