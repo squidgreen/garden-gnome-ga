@@ -6,10 +6,20 @@ ul {
   padding-left: 0;
 }
 
+#addPlantbtn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
 #addWateringReminderBtn {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
+  position: relative;
+  margin-top: 90%;
+  /*
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  */
 }
 
 form {
@@ -17,5 +27,24 @@ form {
 }
 
 .col {
-    border-radius: 5px;
+  border-radius: 5px;
+  border-color: rgb(98, 186, 124);
+}
+
+.container {
+
+}
+
+.heading {
+    position: fixed;
+    z-index: 1;
+    background-color: rgb(98, 186, 124);
+    color: white;
+/*    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 0.5px; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+/*  color: rgb(98, 186, 124);*/
+  text-align: center;
 }
