@@ -9,7 +9,6 @@ document.getElementById("submitReminderFormBtn").addEventListener('click', eatWa
 function eatWaterReminderInput(event) {
   //event.preventDefault(); // Don't actually submit the form
   // Add the new plant reminder to the calendar
-  var plantName = ""; // Reset field
   var plantName =
     document.getElementById('plantNameReminderModalEntry').value;
   var frequency =
@@ -39,7 +38,7 @@ function eatWaterReminderInput(event) {
  //   console.log(Object.getOwnPropertyNames(modalll));
 //    modalll.modal('hide');
   }
-
+  //document.getElementById('setReminderForm').reset(); // Reset field
   var genHTML = calendar.innerHTML;
   sessionStorage.setItem('calendarPopulatedHTML', genHTML);
 }
@@ -57,7 +56,7 @@ function eatWaterReminderInput(event) {
   var frag = document.createDocumentFragment();
   // Create dom elements here and clone them for efficieny
   var newDateEntryDivElem = document.createElement('div');
-  var strongElem = document.createElement('strong');
+  var strongElem = document.createElement('p');
   var ulElem = document.createElement('ul');
   var strongClone;
   var divClone;

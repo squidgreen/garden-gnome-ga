@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow');
+
 li {
 }
 
@@ -45,5 +47,14 @@ form {
 
 h1, h2, h3, h4, h5, h6 {
 /*  color: rgb(98, 186, 124);*/
+  font-family: 'Barlow', sans-serif;
   text-align: center;
+}
+
+#calendar {
+  font-family: 'Barlow', sans-serif;
+}
+#calendar > div > ul {
+  font-size: 0.7em;
+  color: rgb(153, 102, 204);
 }
