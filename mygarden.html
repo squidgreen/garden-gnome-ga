@@ -23,7 +23,7 @@ td{
 		<link href="css/menu.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/home.css">
 	</head>
-	<body>
+	<body onload="uploadPics()">
 
 		<h1 style="text-align:center;">My Garden</h1>
 
@@ -97,9 +97,11 @@ td{
                   <input type="text" class="form-control" name="plantName" id="plantNameMyGardenModalEntry" aria-describedby="plantName" placeholder="Enter name" />
                 </div>
 								<div class="form-group">
-									<label for="plantLocationMyGarden">Location (Optional)</label>
-									<input type="text" class="form-control" name="plantLocation" id="plantLocMyGardenModalEntry" aria-describedby="plantLoc" placeholder="Enter a location in your yard" />
+									<label for="plantLocationMyGarden">Select a picture for your plant</label>
+									<!--<input type="text" class="form-control" name="plantLocation" id="plantLocMyGardenModalEntry" aria-describedby="plantLoc" placeholder="Enter a location in your yard" /> -->
+									<input type="file" id="myFile" multiple size="50" onchange="uploadPics()">
 								</div>
+								
                 <div class="">
                   <button type="button" class="btn btn-success" onclick="">Save</button>
                   <button type="button" class="btn" data-dismiss="modal">Cancel</button>
