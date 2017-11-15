@@ -44,23 +44,12 @@ function uploadPic(){
 $(document).ready(function() {
 	var list = document.getElementById('pEntry');
 	if (sessionStorage.getItem('myGardenEntries')) {
-		console.log("found saved content");
 		list.innerHTML = sessionStorage.getItem('myGardenEntries');
 	}
 })
 
 function savePlant(){
 	var list = document.getElementById('pEntry');
-	if (sessionStorage.getItem('myGardenEntries')) {
-		/*
-		console.log("found saved content");
-		list.innerHTML = sessionStorage.getItem('myGardenEntries');
-		return;
-		*/
-		console.log("found saved content");
-	} else {
-		console.log(' no saved content ');
-	}
 	var pName = document.getElementById('plantNameMyGardenModalEntry').value;
 //	sessionStorage.setItem('plantNameMyGardenModalEntry', pName);
 
