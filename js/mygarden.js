@@ -41,9 +41,28 @@ function uploadPic(){
 //	document.getElementById ("demo").innerHTML = txt;
 }
 
+$(document).ready(function() {
+	var list = document.getElementById('pEntry');
+	if (sessionStorage.getItem('myGardenEntries')) {
+		console.log("found saved content");
+		list.innerHTML = sessionStorage.getItem('myGardenEntries');
+	}
+})
+
 function savePlant(){
+	var list = document.getElementById('pEntry');
+	if (sessionStorage.getItem('myGardenEntries')) {
+		/*
+		console.log("found saved content");
+		list.innerHTML = sessionStorage.getItem('myGardenEntries');
+		return;
+		*/
+		console.log("found saved content");
+	} else {
+		console.log(' no saved content ');
+	}
 	var pName = document.getElementById('plantNameMyGardenModalEntry').value;
-	sessionStorage.setItem('plantNameMyGardenModalEntry', pName);
+//	sessionStorage.setItem('plantNameMyGardenModalEntry', pName);
 
 	//check for duplicates. Duplicates not allowed
 	if (pName == list) {
@@ -61,5 +80,8 @@ function savePlant(){
 
 	newLi.appendChild(newPlantEntry);
 	list.appendChild(newLi);
+
+	var savedHTML = list.innerHTML;
+	sessionStorage.setItem('myGardenEntries', savedHTML);
 	$('#addMyGardenPlantModal').modal('hide');
 }
