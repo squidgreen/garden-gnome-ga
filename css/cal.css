@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow');
 
 li {
+  font-size: 20px;
 }
 
 ul {
   list-style: none;
   padding-left: 0;
 }
+
+p {
+  font-size: 30px;
+}
+
 
 #addPlantbtn {
   position: absolute;
@@ -31,22 +37,21 @@ form {
 }
 
 .container {
-
 }
 
 .heading {
-    position: fixed;
-    z-index: 1;
-    background-color: rgb(98, 186, 124);
-/*    border-bottom-left-radius: 0.5em; uncomment to round the bottom edges of header
-    border-bottom-right-radius: 0.5em;*/
-    color: white;
-/*    -webkit-text-stroke-color: black;
-    -webkit-text-stroke-width: 0.5px; */
+  position: fixed;
+  z-index: 1;
+  background-color: rgb(98, 186, 124);
+  /*    border-bottom-left-radius: 0.5em; uncomment to round the bottom edges of header
+  border-bottom-right-radius: 0.5em;*/
+  color: white;
+  /*    -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 0.5px; */
 }
 
 h1, h2, h3, h4, h5, h6 {
-/*  color: rgb(98, 186, 124);*/
+  /*  color: rgb(98, 186, 124);*/
   font-family: 'Barlow', sans-serif;
   text-align: center;
 }
