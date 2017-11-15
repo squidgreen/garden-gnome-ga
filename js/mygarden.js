@@ -43,6 +43,7 @@ function uploadPic(){
 
 function savePlant(){
 	var pName = document.getElementById('plantNameMyGardenModalEntry').value;
+	sessionStorage.setItem('plantNameMyGardenModalEntry', pName);
 
 	//check for duplicates. Duplicates not allowed
 	if (pName == list) {
