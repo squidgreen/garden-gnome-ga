@@ -1,4 +1,3 @@
-document.getElementById('deleteRemindersMenuOption').addEventListener('click', toggleDeleteIcons);
 document.getElementById('submitReminderFormBtn').addEventListener('click', eatWaterReminderInput);
 
 /**
@@ -45,6 +44,7 @@ function eatWaterReminderInput(event) {
   }
 
   hideDeleteIcons();
+  displayTrashCan();
   //document.getElementById('setReminderForm').reset(); // Reset field
   var genHTML = calendar.innerHTML;
   sessionStorage.setItem('calendarPopulatedHTML', genHTML);
@@ -69,6 +69,8 @@ function addRemovalListeners() {
     // The listener information isn't stored in the HTML, so it must be readded
     // each time the page reloads
     addRemovalListeners();
+    displayTrashCan();
+    hideDeleteIcons();
     return; // Exit early
   }
   // append to "cal" when done creating children
@@ -116,6 +118,27 @@ function addRemovalListeners() {
   sessionStorage.setItem('calendarPopulatedHTML', genHTML);
 })(); // () Execute this function as soon as the user reaches the page
 
+/**
+ * Display a trash can icon to enable water reminder deletion.
+ */
+function displayTrashCan() {
+  var trashCan = document.getElementById('deleteRemindersTrashIcon');
+  var aPlantEntry = document.querySelector('#calendar > div > ul > li');
+
+  if (aPlantEntry) {
+    trashCan.style.display = 'inline';
+  } else if (!aPlantEntry) {
+    trashCan.style.display = 'none';
+  }
+  addDeletionListener();
+  // check if plantEntrys are on page
+}
+
+function addDeletionListener() {
+  var trash = document.getElementById('deleteRemindersTrashIcon');
+  trash.addEventListener('click', toggleDeleteIcons);
+}
+
 function getDaysInMonth(month) {
   if (month == 1) { // february
     return 28; // who cares about leap years in 2017
@@ -134,10 +157,7 @@ function hideDeleteIcons() {
       plantElements[i].style.display = 'none';
     }
   }
-  // Save the generated html per user session
-  var calendar = document.getElementById('calendar');
-  var genHTML = calendar.innerHTML;
-  sessionStorage.setItem('calendarPopulatedHTML', genHTML);
+  savePageState();
 }
 
 function toggleDeleteIcons() {
@@ -150,10 +170,7 @@ function toggleDeleteIcons() {
       plantElements[i].style.display = 'inline';
     }
   }
-  // Save the generated html per user session
-  var calendar = document.getElementById('calendar');
-  var genHTML = calendar.innerHTML;
-  sessionStorage.setItem('calendarPopulatedHTML', genHTML);
+  savePageState();
 }
 
 /**
@@ -171,11 +188,10 @@ function removePlantEntry(event) {
       listItems[i].parentNode.removeChild(listItems[i]);
     }
   }
+  var aPlantEntry = document.querySelector('#calendar > div > ul > li');
+  displayTrashCan();
 
-  // Save updated HTML
-  var calendar = document.getElementById('calendar');
-  var genHTML = calendar.innerHTML;
-  sessionStorage.setItem('calendarPopulatedHTML', genHTML);
+  savePageState();
 }
 
 // Custom form modal validation
@@ -193,3 +209,10 @@ function removePlantEntry(event) {
     }, false);
   }, false);
 })();
+
+function savePageState() {
+  // Save updated HTML
+  var calendar = document.getElementById('calendar');
+  var genHTML = calendar.innerHTML;
+  sessionStorage.setItem('calendarPopulatedHTML', genHTML);
+}
