@@ -26,8 +26,8 @@ form {
 }
 
 .col {
+  border: 1px solid rgb(98, 186, 124);
   border-radius: 5px;
-  border-color: rgb(98, 186, 124);
 }
 
 .container {

@@ -1,0 +1,25 @@
+.container {
+  font-size: 30px;
+}
+
+.btn {
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0.7em;
+  display: block;
+  width: 45%;
+  color: white;
+  background-color: rgb(131, 192, 219);
+}
+
+#forgotPassLink {
+  display: block;
+  text-align: center;
+  color: blue;
+  font-size: 20px;
+}
+
+#forgotPassHolder {
+  width: 50%;
+  margin: auto;
+}

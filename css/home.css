@@ -1,5 +1,5 @@
 body {
-    font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #menu_button_home {
@@ -18,7 +18,7 @@ ul {
 }
 
 .container {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 div[class*="col-4"] {
@@ -60,4 +60,3 @@ div[class*="col-"] {
     font-size: 1.6rem;
   }
 }
-
