@@ -11,7 +11,9 @@ function uploadPic(){
 	image.className += "locationPicThumbnail";
 
 	files = input.files;
-	image.src = window.URL.createObjectURL(files[0]);
+	if (files.length != 0) {
+		image.src = window.URL.createObjectURL(files[0]);
+	}
 
 	return image;
 //	document.body.appendChild(image);
@@ -58,5 +60,5 @@ function savePlant(){
 
 	newLi.appendChild(newPlantEntry);
 	list.appendChild(newLi);
-
+	$('#addMyGardenPlantModal').modal('hide');
 }

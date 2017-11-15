@@ -60,3 +60,12 @@ div[class*="col-"] {
     font-size: 1.6rem;
   }
 }
+
+.locationPicThumbnail {
+  height: 150px;
+  width: 150px;
+}
+
+li {
+  border: 0.5px solid green;
+}
