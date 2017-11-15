@@ -7,10 +7,11 @@ table, td {
     border-collapse: collapse;
 }
 td{
-	padding: 15px;
+	padding: 0px;
 	text-align: left;
 	vertical-align: top;
 }
+
 </style>	
 		<title>My Garden</title>
 		<!-- Required meta tags -->
@@ -37,34 +38,31 @@ td{
 		</div>
 
 
-	<span style="font-size:30px;cursor:pointer;position:absolute;top:0;right:0;" onclick="openNav()">&#9776; Menu</span>
+	<span style="font-size:30px;cursor:pointer;position:absolute;top:0;right:0;" onclick="openNav()">&#9776;</span>
 
-	<table style="width:100%;margin-top:50px;">
+	<table style="margin-top:30px;">
 		<tr>
-			<td width="10%"><img width="200" height="200" src="image/tulips.jpg" alt="Tulips"></td>
-			<td width="90%">
-				<span style="margin-top:0px;margin-left:20px;font-size:50px">TULIP</span>
-				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
+			<td width="30%"><img width=100% height=width src="image/tulips.jpg" alt="Tulips"></td>
+			<td width="70%">
+				<span style="margin-top:0px;font-size:20px">TULIP</span>
+				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:12px;border-style:solid;position:absolute;right:1%;">Location</button>
 			</td>
 		</tr>
 		<tr>
-			<td width="10%"><img width="200" height="200" src="image/AppleTree.jpg" alt="Apples"></td>
-			<td width="90%">
-				<span style="margin-top:0px;margin-left:20px;font-size:50px;">FUJI APPLE</span>
-				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
-				<br><span style="margin-top:0px;margin-left:20px;font-size:50px;">GRANNY SMITH</span>
-				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
-
-				<br><span style="margin-top:0px;margin-left:20px;font-size:50px;">RED DELICIOUS</span>
-				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
+			<td width="30%"><img width=100% height=width src="image/AppleTree.jpg" alt="Apples"></td>
+			<td width="70%">
+				<span style="margin-top:0px;font-size:20px;">FUJI APPLE</span>
+				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:12px;border-style:solid;position:absolute;right:1%;">Location</button>
+				<br><span style="margin-top:0px;font-size:20px;">RED DELICIOUS</span>
+				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:12px;border-style:solid;position:absolute;right:1%;">Location</button>
 
 			</td>
 		</tr>
 		<tr>
-			<td width="10%"><img width="200" height="200" src="image/Orchid.jpg" alt="Orchids"></td>
-			<td width="90%">
-				<a style="font-size:50px;margin-top:0px;margin-left:20px;" href="mygardenbio.html">Orchid</a>
-				<button id="#showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
+			<td width="30%"><img width=100% height=width src="image/Orchid.jpg" alt="Orchids"></td>
+			<td width="70%">
+				<a style="font-size:20px;margin-top:0px;" href="mygardenbio.html">Orchid</a>
+				<button id="#showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:12px;border-style:solid;position:absolute;right:1%;">Location</button>
 			</td>
 		</tr>
 
@@ -72,7 +70,7 @@ td{
 	</table>
 	
 
-		<button id="#addMyGardenPlant" class="btn btn-primary" data-toggle="modal" data-target="#addMyGardenPlantModal" style="position:absolute;right:20px;margin-top:10px;font-size:30px;margin-bottom:20px;">
+		<button id="#addMyGardenPlant" class="btn btn-primary" data-toggle="modal" data-target="#addMyGardenPlantModal" style="position:absolute;right:20px;margin-top:10px;font-size:20px;margin-bottom:20px;">
 			Add Plant
 		</button>
 
@@ -93,13 +91,13 @@ td{
             <div class="container">
               <form action="mygarden.html" method="post">
                 <div class="form-group">
-                  <label for="plantNameMyGardenModalEntry">Plant name</label>
+                  <label for="plantNameMyGardenModalEntry" style="font-size:20px;">Plant name</label>
                   <input type="text" class="form-control" name="plantName" id="plantNameMyGardenModalEntry" aria-describedby="plantName" placeholder="Enter name" />
                 </div>
 								<div class="form-group">
-									<label for="plantLocationMyGarden">Select a picture for your plant</label>
+									<label for="plantLocationMyGarden" style="font-size:20px;">Select a picture for your plant</label>
 									<!--<input type="text" class="form-control" name="plantLocation" id="plantLocMyGardenModalEntry" aria-describedby="plantLoc" placeholder="Enter a location in your yard" /> -->
-									<input type="file" id="myFile" multiple size="50" onchange="uploadPics()">
+									<input style="font-size:20px;" type="file" id="myFile" multiple size="50" onchange="uploadPics()">
 								</div>
 								
                 <div class="">
