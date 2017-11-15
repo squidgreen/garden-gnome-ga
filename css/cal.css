@@ -66,7 +66,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #deleteRemindersTrashIcon {
   display: none;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 /*div > div + div {
@@ -75,5 +75,5 @@ h1, h2, h3, h4, h5, h6 {
 */
 
 #calendar {
-  margin-top: 130px;
+  margin-top: 120px;
 }
