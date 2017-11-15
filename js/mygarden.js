@@ -42,5 +42,7 @@ function savePlant(){
 	
 	newLi.appendChild(newPlantEntry);
 	list.appendChild(newLi);
+	$('#addMyGardenPlantModal').modal('hide');
+	
 	
 }
