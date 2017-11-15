@@ -1,11 +1,9 @@
-/*
-$(document).ready(function() {
-  var reminderForm = document.getElementById('setReminderForm');
-  reminderForm.addEventListener('submit', eatWaterReminderInput);
-});
-*/
-document.getElementById("submitReminderFormBtn").addEventListener('click', eatWaterReminderInput);
+document.getElementById('deleteRemindersMenuOption').addEventListener('click', toggleDeleteIcons);
+document.getElementById('submitReminderFormBtn').addEventListener('click', eatWaterReminderInput);
 
+/**
+ * Display information entered into the plant reminder modal on the calendar.
+ */
 function eatWaterReminderInput(event) {
   //event.preventDefault(); // Don't actually submit the form
   // Add the new plant reminder to the calendar
@@ -14,7 +12,8 @@ function eatWaterReminderInput(event) {
   var frequency =
     document.getElementById('frequencyModalSelector').value;
   var date = document.getElementById('dateModalEntry').value;
-  if (date == "") {
+
+  if (date == "") { // Default to 1
     date = 1;
   }
 
@@ -26,21 +25,37 @@ function eatWaterReminderInput(event) {
   // append the plant as a new li to each days ul list
   for(var i = 0; i < children.length; i++) {
     var newEle = document.createElement("li");
-    var elemText = document.createTextNode(plantName);
+    newEle.className = 'plantEntry';
+    var elemText = document.createTextNode(plantName + " ");
     newEle.appendChild(elemText);
+
+    // Append an icon to each li, initially hidden, that can be used to delete the item
+    var newIEle = document.createElement('i');
+    newIEle.className += 'fa fa-minus-circle';
+    newIEle.style.display = 'none';
+
+    newIEle.addEventListener('click', removePlantEntry);
+    newEle.appendChild(newIEle);
     children[i].appendChild(newEle);
   }
 
   if (plantName != "") {
     var foo = document.getElementById('addReminderModal');
     $('#addReminderModal').modal('hide');
-    //foo.modal('hide');
- //   console.log(Object.getOwnPropertyNames(modalll));
-//    modalll.modal('hide');
   }
+
+  hideDeleteIcons();
   //document.getElementById('setReminderForm').reset(); // Reset field
   var genHTML = calendar.innerHTML;
   sessionStorage.setItem('calendarPopulatedHTML', genHTML);
+}
+
+/**
+ * Renew event listeners on plant entry removal icons.
+ */
+function addRemovalListeners() {
+//  var icons = document.getElementsByClassName('fa fa-minus-circle');
+  $('.fa').on('click', removePlantEntry);
 }
 
 /**
@@ -50,6 +65,10 @@ function eatWaterReminderInput(event) {
   if (sessionStorage.getItem('calendarPopulatedHTML')) {
     cal = document.getElementById('calendar');
     cal.innerHTML = sessionStorage.getItem('calendarPopulatedHTML');
+
+    // The listener information isn't stored in the HTML, so it must be readded
+    // each time the page reloads
+    addRemovalListeners();
     return; // Exit early
   }
   // append to "cal" when done creating children
@@ -107,17 +126,59 @@ function getDaysInMonth(month) {
   }
 }
 
-/*
-function switchToDayView() {
-  document.location.href = "dayview.html/?";
-  var plants = document.getElementById('getme').value;
-  localStorage.setItem('plant', plants);
-  // fill in content on dayview page
+function hideDeleteIcons() {
+  var plantElements = document.querySelectorAll('.plantEntry > i');
+  for (var i = 0; i < plantElements.length; i++) {
+    var currentState = plantElements[i].style.display;
+    if (currentState == 'inline') {
+      plantElements[i].style.display = 'none';
+    }
+  }
+  // Save the generated html per user session
+  var calendar = document.getElementById('calendar');
+  var genHTML = calendar.innerHTML;
+  sessionStorage.setItem('calendarPopulatedHTML', genHTML);
 }
-*/
+
+function toggleDeleteIcons() {
+  var plantElements = document.querySelectorAll('.plantEntry > i');
+  for (var i = 0; i < plantElements.length; i++) {
+    var currentState = plantElements[i].style.display;
+    if (currentState == 'inline') {
+      plantElements[i].style.display = 'none';
+    } else {
+      plantElements[i].style.display = 'inline';
+    }
+  }
+  // Save the generated html per user session
+  var calendar = document.getElementById('calendar');
+  var genHTML = calendar.innerHTML;
+  sessionStorage.setItem('calendarPopulatedHTML', genHTML);
+}
+
+/**
+ * Remove plants from calendar.
+ * @event The element that was clicked
+ */
+function removePlantEntry(event) {
+  // need to get the parent 'ul' that holds the 'li' that holds the 'i' to remove it
+  // Find the right elements to remove by matching the text inside the 'li'
+  var textOfLi = event.target.parentNode.innerText;
+  var listItems = document.querySelectorAll('#calendar > div li');
+  for (var i = 0; i < listItems.length; i++) {
+    if (listItems[i].innerText == textOfLi) {
+      //then get the parent of the li and remove the li
+      listItems[i].parentNode.removeChild(listItems[i]);
+    }
+  }
+
+  // Save updated HTML
+  var calendar = document.getElementById('calendar');
+  var genHTML = calendar.innerHTML;
+  sessionStorage.setItem('calendarPopulatedHTML', genHTML);
+}
 
 // Custom form modal validation
-/*
 (function() {
   'use strict';
 
@@ -132,4 +193,3 @@ function switchToDayView() {
     }, false);
   }, false);
 })();
-*/
