@@ -1,3 +1,5 @@
+var wc = {}; // global variable access
+wc.month = new Date().getMonth();
 document.getElementById('submitReminderFormBtn').addEventListener('click', eatWaterReminderInput);
 
 /**
@@ -11,6 +13,7 @@ function eatWaterReminderInput(event) {
   var frequency =
     document.getElementById('frequencyModalSelector').value;
   var date = document.getElementById('dateModalEntry').value;
+  console.log("Date grabbed: " + date);
 
   if (date == "") { // Default to 1
     date = 1;
@@ -38,8 +41,13 @@ function eatWaterReminderInput(event) {
     children[i].appendChild(newEle);
   }
 
-  if (plantName != "") {
+  var daysInCurrentMonth = getDaysInMonth(wc.month);
+
+  if (plantName != "" && (date > 0 && date <= daysInCurrentMonth)) {
     var foo = document.getElementById('addReminderModal');
+    // Reset error messages on the form
+    var form = document.getElementById('setReminderForm');
+    form.classList.add('was-validated');
     $('#addReminderModal').modal('hide');
   }
 
@@ -91,7 +99,7 @@ function addRemovalListeners() {
   var month = dateObj.getMonth();
   var daysInMonth = getDaysInMonth(month);
 
-  var daysOfWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+  var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   for (var i = 0; i < daysInMonth; i++) {
     // two counters. one for which day of the week we're stamping and one for
@@ -162,11 +170,16 @@ function hideDeleteIcons() {
 
 function toggleDeleteIcons() {
   var plantElements = document.querySelectorAll('.plantEntry > i');
+  var tooltip = document.querySelector('.tooltiptext');
+
   for (var i = 0; i < plantElements.length; i++) {
     var currentState = plantElements[i].style.display;
     if (currentState == 'inline') {
       plantElements[i].style.display = 'none';
+      tooltip.style.visibility = "hidden";
     } else {
+      // Insert popup here that warns user they will delete all reminders in a series
+      tooltip.style.visibility = "visible";
       plantElements[i].style.display = 'inline';
     }
   }
