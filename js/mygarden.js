@@ -46,18 +46,19 @@ function uploadPic(){
  */
 function rebuildPage() {
 	var numSavedPlants = sessionStorage.getItem('numPlants');
-	if (numSavedPlants == null || numSavedPlants > 0) {
+	if (numSavedPlants == null || numSavedPlants == 0) {
+		console.log('no numSavedPlants info in storage');
 		return;
 	}
 
 	for (var index = 0; index < numSavedPlants; index++) {
 		var plantID = 'plant' + index;
 		var nameOfPlant = sessionStorage.getItem(plantID);
-		var plantFrequency = sessionStorage.getItem(plantID + 'Frequency');
+		var plantWateringFrequency = sessionStorage.getItem(plantID + 'Frequency');
 		// image as well? var plantImageHTML = sessionStorage.getItem(plantID + 'Img');
 		// Insert image into storage the same time you insert the original plant into the mygarden list
 		// For plants taken from the watercalendar, find a placeholder image? Some pixel plant arrangement? or a nice big pixel AppleTree
-		addPlantFromStorage(nameOfPlant, plantFrequency);
+		addPlantFromStorage(nameOfPlant, plantWateringFrequency);
 		// no giant innerHTML stamping, just adding plants, frequency, and images one by one
 		// When leaving this page, save any new plants added through modal into sessionStorage in the same fashion.
 		// Allow user editing? We could - would just need to update sessionStorage after they finish.
@@ -68,15 +69,37 @@ function rebuildPage() {
  * Add a plant and its frequency to the main myGarden list.
  */
 function addPlantFromStorage(plantName, wateringFrequency) {
-	var getElementById('pEntry');
+	var plantList = document.getElementById('pEntry');
+
+	var newPlantListEntry = document.createElement('li');
+	var entryData = document.createTextNode(plantName);
+
+	var wateringInfoElement = document.createElement('p');
+	var wateringInfoText;
+	if (parseInt(wateringFrequency) == 1) {
+		wateringInfoText = ' - Water every day';
+	} else if (parseInt(wateringFrequency) == 7 ) {
+		wateringInfoText = ' - Water once a week';
+	} else {
+		wateringInfoText = ' - Water every ' + wateringFrequency + ' days';
+	}
+	var wateringInfoTextNode = document.createTextNode(wateringInfoText);
+
+	wateringInfoElement.appendChild(wateringInfoTextNode);
+	newPlantListEntry.appendChild(entryData);
+	newPlantListEntry.appendChild(wateringInfoElement);
+
+	plantList.appendChild(newPlantListEntry);
 }
 
-
 $(document).ready(function() {
+	/*
 	var list = document.getElementById('pEntry');
 	if (sessionStorage.getItem('myGardenEntries')) {
 		list.innerHTML = sessionStorage.getItem('myGardenEntries');
 	}
+	*/
+	rebuildPage();
 })
 
 function savePlant() {
