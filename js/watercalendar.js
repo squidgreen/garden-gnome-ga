@@ -4,6 +4,7 @@ document.getElementById('submitReminderFormBtn').addEventListener('click', eatWa
 
 /**
  * Display information entered into the plant reminder modal on the calendar.
+ * Called when the submit button on the modal is clicked.
  */
 function eatWaterReminderInput(event) {
   //event.preventDefault(); // Don't actually submit the form
@@ -44,18 +45,46 @@ function eatWaterReminderInput(event) {
   var daysInCurrentMonth = getDaysInMonth(wc.month);
 
   if (plantName != "" && (date > 0 && date <= daysInCurrentMonth)) {
-    var foo = document.getElementById('addReminderModal');
     // Reset error messages on the form
     var form = document.getElementById('setReminderForm');
     form.classList.add('was-validated');
     $('#addReminderModal').modal('hide');
+    recordPlantAdded(plantName, frequency);
   }
 
   hideDeleteIcons();
   displayTrashCan();
   //document.getElementById('setReminderForm').reset(); // Reset field
-  var genHTML = calendar.innerHTML;
-  sessionStorage.setItem('calendarPopulatedHTML', genHTML);
+  savePageState();
+}
+
+/*
+ * Save plant information added to the calendar in sessionStorage, so that it
+ * can be added to the myGarden page.
+ */
+function recordPlantAdded(plantName, frequency) {
+  // check how many things are in storage.
+  // differentiate each plant by the order it was added to sessionStorage
+  var numPlantsStr = sessionStorage.getItem('numPlants');
+  if (numPlantsStr == null) { // First entry
+    sessionStorage.setItem('numPlants', 1);
+    var numPlantsStr = sessionStorage.getItem('numPlants');
+  }
+
+  var numPlants = parseInt(numPlantsStr, 10);
+  if (isNaN(numPlants)) {
+    // TODO something
+    console.log("ERROR ERRROR ERRRROR, string found in local storage for numPlants is NaN");
+  }
+
+  // Store the name of the plant
+  var plantID = 'plant' + numPlants;
+  sessionStorage.setItem(plantID, plantName);
+  sessionStorage.setItem(plantID + "Frequency", frequency);
+
+  // Increment storage
+  numPlants += 1;
+  sessionStorage.setItem('numPlants', numPlants.toString());
 }
 
 /**
@@ -122,8 +151,7 @@ function addRemovalListeners() {
   cal.appendChild(frag);
 
   // Save the generated html per user session
-  var genHTML = cal.innerHTML;
-  sessionStorage.setItem('calendarPopulatedHTML', genHTML);
+  savePageState();
 })(); // () Execute this function as soon as the user reaches the page
 
 /**
@@ -207,7 +235,10 @@ function removePlantEntry(event) {
   savePageState();
 }
 
-// Custom form modal validation
+/*
+ * Custom form modal validation. Activated if information present at the time of
+ * submission is invalid or incomplete.
+ */
 (function() {
   'use strict';
 
