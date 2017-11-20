@@ -67,20 +67,21 @@ function recordPlantAdded(plantName, frequency) {
   // differentiate each plant by the order it was added to sessionStorage
   var numPlantsStr = sessionStorage.getItem('numPlants');
   if (numPlantsStr == null) { // First entry
-    sessionStorage.setItem('numPlants', 1);
-    var numPlantsStr = sessionStorage.getItem('numPlants');
+    sessionStorage.setItem('numPlants', 0);
+    numPlantsStr = sessionStorage.getItem('numPlants');
   }
 
   var numPlants = parseInt(numPlantsStr, 10);
   if (isNaN(numPlants)) {
     // TODO something
     console.log("ERROR ERRROR ERRRROR, string found in local storage for numPlants is NaN");
+    return;
   }
 
   // Store the name of the plant
   var plantID = 'plant' + numPlants;
   sessionStorage.setItem(plantID, plantName);
-  sessionStorage.setItem(plantID + "Frequency", frequency);
+  sessionStorage.setItem(plantID + 'Frequency', frequency);
 
   // Increment storage
   numPlants += 1;

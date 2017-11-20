@@ -41,6 +41,37 @@ function uploadPic(){
 //	document.getElementById ("demo").innerHTML = txt;
 }
 
+/*
+ * Add all plants and images back to the mygarden list.
+ */
+function rebuildPage() {
+	var numSavedPlants = sessionStorage.getItem('numPlants');
+	if (numSavedPlants == null || numSavedPlants > 0) {
+		return;
+	}
+
+	for (var index = 0; index < numSavedPlants; index++) {
+		var plantID = 'plant' + index;
+		var nameOfPlant = sessionStorage.getItem(plantID);
+		var plantFrequency = sessionStorage.getItem(plantID + 'Frequency');
+		// image as well? var plantImageHTML = sessionStorage.getItem(plantID + 'Img');
+		// Insert image into storage the same time you insert the original plant into the mygarden list
+		// For plants taken from the watercalendar, find a placeholder image? Some pixel plant arrangement? or a nice big pixel AppleTree
+		addPlantFromStorage(nameOfPlant, plantFrequency);
+		// no giant innerHTML stamping, just adding plants, frequency, and images one by one
+		// When leaving this page, save any new plants added through modal into sessionStorage in the same fashion.
+		// Allow user editing? We could - would just need to update sessionStorage after they finish.
+	}
+}
+
+/*
+ * Add a plant and its frequency to the main myGarden list.
+ */
+function addPlantFromStorage(plantName, wateringFrequency) {
+	var getElementById('pEntry');
+}
+
+
 $(document).ready(function() {
 	var list = document.getElementById('pEntry');
 	if (sessionStorage.getItem('myGardenEntries')) {
@@ -48,7 +79,7 @@ $(document).ready(function() {
 	}
 })
 
-function savePlant(){
+function savePlant() {
 	var list = document.getElementById('pEntry');
 	var pName = document.getElementById('plantNameMyGardenModalEntry').value;
 //	sessionStorage.setItem('plantNameMyGardenModalEntry', pName);
@@ -58,7 +89,6 @@ function savePlant(){
 		alert ("That plant is already included in the list - please enter another plant");
 		return false;
 	}
-
 
 	var list = document.getElementById('pEntry');
 	var newLi = document.createElement('li');
