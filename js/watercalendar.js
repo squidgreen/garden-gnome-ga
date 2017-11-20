@@ -14,7 +14,6 @@ function eatWaterReminderInput(event) {
   var frequency =
     document.getElementById('frequencyModalSelector').value;
   var date = document.getElementById('dateModalEntry').value;
-  console.log("Date grabbed: " + date);
 
   if (date == "") { // Default to 1
     date = 1;
