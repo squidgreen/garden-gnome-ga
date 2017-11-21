@@ -1,3 +1,7 @@
+li {
+  font-size: 0.8em;
+}
+
 p {
   font-size: 0.5em;
 }
@@ -5,4 +9,28 @@ p {
 img {
   height: 125px;
   width: 125px;
+}
+
+.plantContentContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.plantInfoLeftContent {
+/*  float: left;*/
+  width: 50%;
+}
+
+.plantInfoRightContent {
+/*  float: right;*/
+  width: 50%;
+}
+
+input[type="file"] {
+  font-size: 0.5em;
+  display: none;
+}
+
+.fileInputDecoyBtn {
+  font-size: 0.4em;
 }

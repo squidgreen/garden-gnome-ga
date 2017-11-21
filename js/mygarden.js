@@ -1,7 +1,14 @@
-
-
 document.getElementById("savePlantButton").addEventListener('click', savePlant);
 
+$(document).ready(function() {
+	/*
+	var list = document.getElementById('pEntry');
+	if (sessionStorage.getItem('myGardenEntries')) {
+		list.innerHTML = sessionStorage.getItem('myGardenEntries');
+	}
+	*/
+	rebuildMyGardenPage();
+})
 
 /*
  * Add all plants and images back to the mygarden list.
@@ -17,10 +24,11 @@ function rebuildMyGardenPage() {
 		var plantID = 'plant' + index;
 		var nameOfPlant = sessionStorage.getItem(plantID);
 		var plantWateringFrequency = sessionStorage.getItem(plantID + 'Frequency');
+		var plantImg = sessionStorage.getItem(plantID + "Img");
 		// image as well? var plantImageHTML = sessionStorage.getItem(plantID + 'Img');
 		// Insert image into storage the same time you insert the original plant into the mygarden list
 		// For plants taken from the watercalendar, find a placeholder image? Some pixel plant arrangement? or a nice big pixel AppleTree
-		addPlantFromStorage(nameOfPlant, plantWateringFrequency);
+		addPlantFromStorage(index, nameOfPlant, plantWateringFrequency, plantImg);
 		// no giant innerHTML stamping, just adding plants, frequency, and images one by one
 		// When leaving this page, save any new plants added through modal into sessionStorage in the same fashion.
 		// Allow user editing? We could - would just need to update sessionStorage after they finish.
@@ -30,14 +38,53 @@ function rebuildMyGardenPage() {
 /*
  * Add a plant and its frequency to the main myGarden list.
  */
-function addPlantFromStorage(plantName, wateringFrequency) {
+function addPlantFromStorage(plantID, plantName, wateringFrequency, imgFile) {
 	var plantList = document.getElementById('pEntry');
+
+	// Make a container with two sections containing a plant's information
+	var plantInfoContainer = document.createElement('div');
+	plantInfoContainer.classList.add("plantContentContainer");
+
+	var plantInfoLeft = document.createElement('div');
+	plantInfoLeft.classList.add("plantInfoLeftContent");
+	var plantInfoRight = document.createElement('div');
+	plantInfoRight.classList.add("plantInfoRightContent");
+
+	plantInfoContainer.appendChild(plantInfoLeft);
+	plantInfoContainer.appendChild(plantInfoRight);
 
 	var newPlantListEntry = document.createElement('li');
 
+	// The Image
 	var thumbnail = document.createElement('img');
+	thumbnail.id = "myGardenPlantPic-" + plantID;
+//	thumbnail.src = window.createObjectURL(imgFile);	// TODO work in progress - assume we can save the file as html in sessionStorage
+	thumbnail.addEventListener('click', chooseImageFile);
+
+	// Image input field
+	/*
+	var plantPicInputLabel = document.createElement('label');
+	plantPicInputLabel.for = "myGardenImgInput-" + plantID;
+	plantPicInputLabel.appendChild(document.createTextNode('Change Image'));
+	*/
+	var browseFileInputID = "selectPlantImgBtn-" + plantID;
+	var plantPicInput = document.createElement('input');
+	plantPicInput.type = "file";
+	plantPicInput.id = browseFileInputID;
+	plantPicInput.name = browseFileInputID;
+	var plantPicInputDecoyBtn = document.createElement('button');
+	plantPicInputDecoyBtn.type = "button";
+	plantPicInputDecoyBtn.classList.add('fileInputDecoyBtn');
+	plantPicInputDecoyBtn.classList.add('btn', 'btn-primary');
+	plantPicInputDecoyBtn.appendChild(document.createTextNode("Change Image"));
+	plantPicInputDecoyBtn.addEventListener('click', function() {
+		document.getElementById(browseFileInputID).click();
+	});
+
+	// Plant name
 	var entryData = document.createTextNode(plantName);
 
+	// Watering Frequency
 	var wateringInfoElement = document.createElement('p');
 	var wateringInfoText;
 	if (parseInt(wateringFrequency) == 1) {
@@ -48,24 +95,21 @@ function addPlantFromStorage(plantName, wateringFrequency) {
 		wateringInfoText = ' - Water every ' + wateringFrequency + ' days';
 	}
 	var wateringInfoTextNode = document.createTextNode(wateringInfoText);
-
 	wateringInfoElement.appendChild(wateringInfoTextNode);
-	newPlantListEntry.appendChild(thumbnail);
-	newPlantListEntry.appendChild(entryData);
-	newPlantListEntry.appendChild(wateringInfoElement);
 
+	plantInfoLeft.appendChild(thumbnail);
+	plantInfoLeft.appendChild(plantPicInput);
+	plantInfoLeft.appendChild(plantPicInputDecoyBtn);
+	plantInfoRight.appendChild(entryData);
+	plantInfoRight.appendChild(wateringInfoElement);
+
+	newPlantListEntry.appendChild(plantInfoContainer);
 	plantList.appendChild(newPlantListEntry);
 }
 
-$(document).ready(function() {
-	/*
-	var list = document.getElementById('pEntry');
-	if (sessionStorage.getItem('myGardenEntries')) {
-		list.innerHTML = sessionStorage.getItem('myGardenEntries');
-	}
-	*/
-	rebuildMyGardenPage();
-})
+function chooseImageFile() {
+
+}
 
 function savePlant() {
 	var list = document.getElementById('pEntry');
@@ -91,6 +135,13 @@ function savePlant() {
 	var savedHTML = list.innerHTML;
 	sessionStorage.setItem('myGardenEntries', savedHTML);
 	$('#addMyGardenPlantModal').modal('hide');
+}
+
+/*
+ * Applies an event listener to the image element in a plant entry.
+ */
+function addListenerForImage() {
+//	document.getElement
 }
 
 //upload pic option for modal to add plant
