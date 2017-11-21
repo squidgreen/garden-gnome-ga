@@ -101,3 +101,28 @@ h1, h2, h3, h4, h5, h6 {
   visibility: visible;
 }
 */
+
+/* 
+# weekly break
+*/
+
+hr.styleBr { 
+  margin-top: 1em;
+  height: 30px; 
+  border-style: solid; 
+  border-color: #8c8b8b; 
+  border-width: 1px 0 0 0; 
+  border-radius: 20px; 
+  border-color: green;
+} 
+
+hr.styleBr:before { 
+  display: block; 
+  content: ""; 
+  height: 30px; 
+  margin-top: -31px; 
+  border-style: solid; 
+  border-color: #8c8b8b; 
+  border-width: 0 0 1px 0; 
+  border-radius: 20px; 
+}

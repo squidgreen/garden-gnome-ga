@@ -133,6 +133,17 @@ function addRemovalListeners() {
   for (var i = 0; i < daysInMonth; i++) {
     // two counters. one for which day of the week we're stamping and one for
     // the numerical date
+	if(i!=0 && i%7 == 0){
+		var element = document.createElement('hr');
+		element.className = "styleBr";
+		strongClone = strongElem.cloneNode();
+		strongClone.appendChild(element); 
+		
+		divClone = newDateEntryDivElem.cloneNode();
+
+		divClone.appendChild(strongClone);
+		frag.appendChild(divClone);
+	}
 	
     var text = daysOfWeek[(dateObj.getDay() + i) % 7] + " " + (i + 1);
     var dateText = document.createTextNode(text);
@@ -166,8 +177,6 @@ function displayTrashCan() {
     trashCan.style.display = 'inline';
   } else if (!aPlantEntry) {
     trashCan.style.display = 'none';
-    var tooltip = document.querySelector('.tooltiptext');
-    tooltip.style.visibility = "hidden";
   }
   addDeletionListener();
   // check if plantEntrys are on page
