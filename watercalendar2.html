@@ -1,0 +1,117 @@
+<!doctype html>
+
+<html>
+<head>
+	<title>Water Calendar</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/menu.css" />
+	<link rel="stylesheet" href="css/cal.css" />
+</head>
+
+<body>
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a href="watercalendar.html">Water Calendar</a>
+		<a href="mygarden.html">My Garden</a>
+		<a href="index.html">Sign out</a>
+	</div>
+	<span id="menuHamburger" onclick="openNav()">&#9776;</span>
+
+	<div class="container heading">
+		<h2>Water Calendar</h2>
+		<h3>November</h3>
+		<span>
+			<i id="deleteRemindersTrashIcon" class="fa fa-trash-o" aria-hidden="true"></i>
+			<span class="tooltiptext">Deleting an event will delete ALL related events.</span>
+		</span>
+	</div>
+
+	<div class="container" id="calendarContainer">
+		<div class="col-align-items-normal" id="calendar">
+		</div>
+	</div>
+
+	<div id="addWateringReminderBtn">
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addReminderModal" style="margin-top:10px;">
+			Add Watering Reminder
+		</button>
+	</div>
+
+	<!-- Modal --> <!-- TODO role and other aria attributes -->
+	<div class="modal fade" id="addReminderModal" tabindex="-1" role="dialog" aria-labelledby="addReminderModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<!-- Begin modal content -->
+				<div class="modal-header">
+					<h5 class="modal-title" id="addReminderModalLabel">
+						Add a new watering reminder
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+
+					<!-- Form for adding new plant watering reminder -->
+					<div class="container">
+						<form id="setReminderForm" novalidate>
+							<div class="form-group">
+								<label for="plantNameReminderModalEntry">
+									Plant name
+								</label>
+								<input id="plantNameReminderModalEntry" type="text" class="form-control" name="plantName" placeholder="Enter name" required autofocus/>
+								<div class="invalid-feedback">
+									Be sure to enter a name for the plant above
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="dateModalEntry">Date</label>
+								<input id="dateModalEntry" class="form-control" type="number" placeholder="Default: 1" value="1" min="1" max="30" required/>
+								<div class="invalid-feedback">
+									Date must be a number in the month.
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="frequencyModalSelector">Choose how often to water</label>
+								<select id="frequencyModalSelector" class="custom-select" name="repeatChoice">
+									<option selected value="1">Daily</option>
+									<option value="2">Every 2 days</option>
+									<option value="3">Every 3 days</option>
+									<option value="4">Every 4 days</option>
+									<option value="5">Every 5 days</option>
+									<option value="6">Every 6 days</option>
+									<option value="7">Once a Week</option>
+								</select>
+							</div>
+							<div class="container">
+								<button id="submitReminderFormBtn" type="button" class="btn btn-success">
+									Save
+								</button>
+								<button type="button" class="btn" data-dismiss="modal">
+									Cancel
+								</button>
+							</div>
+						</form>
+
+					</div>
+				</div>
+				<!-- End modal content -->
+			</div>
+		</div>
+	</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script src="js/watercalendar2.js"></script>
+	<script src="js/menu.js"></script>
+</body>
+</html>
