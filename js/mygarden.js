@@ -57,7 +57,12 @@ function addPlantFromStorage(plantID, plantName, wateringFrequency, imgFile) {
 
 	// The Image
 	var thumbnail = document.createElement('img');
-	thumbnail.id = "myGardenPlantPic-" + plantID;
+	thumbnail.id = "myGardenPlantImg-" + plantID;
+	if (sessionStorage.getItem('myGardenPlantImg-' + plantID)) {
+		thumbnail.src = sessionStorage.getItem('myGardenPlantImg-' + plantID);
+	} else {
+		// thumbnail.src = placeholder plant image
+	}
 //	thumbnail.src = sessionStorage.getItem('myGardenPlantImg-' + plantID') //window.createObjectURL(imgFile);	// TODO work in progress - assume we can save the file as html in sessionStorage
 	//thumbnail.addEventListener('click', chooseImageFile);
 
@@ -123,7 +128,7 @@ function changeThumbnail(event) {
 
 	if (window.File && window.FileReader && window.FileList && window.Blob) {
 		var files = event.target.files;
-		var thumbnail =  document.getElementById("myGardenPlantPic-" + plantID);
+		var thumbnail =  document.getElementById("myGardenPlantImg-" + plantID);
 		console.log(files[0]);
 		//thumbnail.src = files[0];
 		var reader = new FileReader();
