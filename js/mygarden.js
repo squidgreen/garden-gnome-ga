@@ -61,7 +61,7 @@ function addPlantFromStorage(plantID, plantName, wateringFrequency, imgFile) {
 	if (sessionStorage.getItem('myGardenPlantImg-' + plantID)) {
 		thumbnail.src = sessionStorage.getItem('myGardenPlantImg-' + plantID);
 	} else {
-		// thumbnail.src = placeholder plant image
+		thumbnail.src = 'image/sunflower.jpg';
 	}
 //	thumbnail.src = sessionStorage.getItem('myGardenPlantImg-' + plantID') //window.createObjectURL(imgFile);	// TODO work in progress - assume we can save the file as html in sessionStorage
 	//thumbnail.addEventListener('click', chooseImageFile);
