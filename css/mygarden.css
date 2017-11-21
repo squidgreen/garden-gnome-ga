@@ -35,7 +35,7 @@ img {
   text-align: center;
 }
 
-input[type="file"] {
+.plantFileInputField {
   font-size: 0.5em;
   display: none;
 }

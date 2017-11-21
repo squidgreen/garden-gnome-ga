@@ -59,7 +59,7 @@ function addPlantFromStorage(plantID, plantName, wateringFrequency, imgFile) {
 	var thumbnail = document.createElement('img');
 	thumbnail.id = "myGardenPlantPic-" + plantID;
 //	thumbnail.src = window.createObjectURL(imgFile);	// TODO work in progress - assume we can save the file as html in sessionStorage
-	thumbnail.addEventListener('click', chooseImageFile);
+	//thumbnail.addEventListener('click', chooseImageFile);
 
 	// Image input field
 	var browseFileInputID = "selectPlantImgBtn-" + plantID;
@@ -67,6 +67,7 @@ function addPlantFromStorage(plantID, plantName, wateringFrequency, imgFile) {
 	plantPicInput.type = "file";
 	plantPicInput.id = browseFileInputID;
 	plantPicInput.name = browseFileInputID;
+	plantPicInput.classList.add('plantFileInputFields');
 	var plantPicInputDecoyBtn = document.createElement('button');
 	plantPicInputDecoyBtn.type = "button";
 	plantPicInputDecoyBtn.classList.add('fileInputDecoyBtn');
@@ -75,6 +76,10 @@ function addPlantFromStorage(plantID, plantName, wateringFrequency, imgFile) {
 	plantPicInputDecoyBtn.addEventListener('click', function() {
 		document.getElementById(browseFileInputID).click();
 	});
+
+	$(document).ready(function () {
+		document.getElementById(browseFileInputID).addEventListener('change', changeThumbnail);
+	})
 
 	// Plant name
 	var entryData = document.createTextNode(plantName);
@@ -102,8 +107,32 @@ function addPlantFromStorage(plantID, plantName, wateringFrequency, imgFile) {
 	plantList.appendChild(newPlantListEntry);
 }
 
-function chooseImageFile() {
+/*
+ * Fired when the user chooses a new file to represent a plant entry. Swap out
+ * the current image with the chosen one. Identify which 'img' element to
+ * change via the id of the current input element.
+ */
+function changeThumbnail(event) {
+	// var browseFileInputID = "selectPlantImgBtn-" + plantID;
+//	var newImage = document.getElementById()
+	console.log(event);
+	console.log(event.target.id);
+	console.log(event.target.value);
 
+	var elementIDNum = event.target.id[event.target.id.length - 1];
+
+	if (window.File && window.FileReader && window.FileList && window.Blob) {
+		var files = event.target.files;
+		var thumbnail =  document.getElementById("myGardenPlantPic-" + elementIDNum);
+		console.log(files[0]);
+		//thumbnail.src = files[0];
+		var reader = new FileReader();
+		reader.onload(function (fileObj) {
+
+		})
+	} else {
+		console.log("file input not supported???");
+	}
 }
 
 function savePlant() {
