@@ -165,6 +165,8 @@ function displayTrashCan() {
     trashCan.style.display = 'inline';
   } else if (!aPlantEntry) {
     trashCan.style.display = 'none';
+    var tooltip = document.querySelector('.tooltiptext');
+    tooltip.style.visibility = "hidden";
   }
   addDeletionListener();
   // check if plantEntrys are on page
