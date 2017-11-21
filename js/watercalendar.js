@@ -57,6 +57,74 @@ function eatWaterReminderInput(event) {
   savePageState();
 }
 
+// TODO TODO TODO
+/*
+  We could make this work by storing a date when the user adds something
+  to their garden. But they probably won't want to do that?
+  Or, and I think this is the best option - allow the user to edit the dates on
+  the calendar. You would need to copy parts of eatWaterReminderInput().
+
+  We also would need to edit parts of this page's javascript file to restore plants
+  similarly to how they're restored in mygarden.js. Right now this page uses
+  savePageState(), which just saves all the html, and then we reload all the html
+  from storage, but we should change it to be like rebuildMyGardenPage(), where
+  it takes each plant out of storage, one by one and then puts it on the calendar.
+  We'd need to add a new field into sessionStorage when we save a plant, so that
+  we know its original date.
+
+  Sort of ignore this function, everything below line 84 needs to change slightly.
+ */
+function rebuildWaterCalendarPage() {
+  var numPlants = sessionStorage.getItem('numPlants');
+  for (var index = 0; index < numPlants; index++) {
+    plantID = 'plant' + index;
+    var plantName = sessionStorage.getItem(plantID);
+    var frequency = sessionStorage.getItem(plantID + 'Frequency');
+// TODO    var date = document.getElementById('dateModalEntry').value;
+
+    if (date == "") { // Default to 1
+      date = 1;
+    }
+
+    // get every nth child of calendar
+    var queryStr = '.col-align-items-normal:nth-child(' + date + ')'; //' > ul';
+    var calendar = document.getElementById('calendar');
+    var children = calendar.querySelectorAll(':nth-child(' + frequency + 'n+' + date + ')' + ' > ul');
+
+    // append the plant as a new li to each days ul list
+    for(var i = 0; i < children.length; i++) {
+      var newEle = document.createElement("li");
+      newEle.className = 'plantEntry';
+      var elemText = document.createTextNode(plantName + " ");
+      newEle.appendChild(elemText);
+
+      // Append an icon to each li, initially hidden, that can be used to delete the item
+      var newIEle = document.createElement('i');
+      newIEle.className += 'fa fa-minus-circle';
+      newIEle.style.display = 'none';
+
+      newIEle.addEventListener('click', removePlantEntry);
+      newEle.appendChild(newIEle);
+      children[i].appendChild(newEle);
+    }
+
+    var daysInCurrentMonth = getDaysInMonth(wc.month);
+
+    if (plantName != "" && (date > 0 && date <= daysInCurrentMonth)) {
+      // Reset error messages on the form
+      var form = document.getElementById('setReminderForm');
+      form.classList.add('was-validated');
+      $('#addReminderModal').modal('hide');
+      recordPlantAdded(plantName, frequency);
+    }
+
+    hideDeleteIcons();
+    displayTrashCan();
+    //document.getElementById('setReminderForm').reset(); // Reset field
+    savePageState();
+  }
+}
+
 /*
  * Save plant information added to the calendar in sessionStorage, so that it
  * can be added to the myGarden page.
@@ -133,7 +201,7 @@ function addRemovalListeners() {
   for (var i = 0; i < daysInMonth; i++) {
     // two counters. one for which day of the week we're stamping and one for
     // the numerical date
-	
+
     var text = daysOfWeek[(dateObj.getDay() + i) % 7] + " " + (i + 1);
     var dateText = document.createTextNode(text);
 

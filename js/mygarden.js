@@ -150,7 +150,6 @@ function savePlant() {
 //	sessionStorage.setItem('plantNameMyGardenModalEntry', pName);
 	// Save the plants info into local storage
 	var plantID = sessionStorage.getItem('numPlants');
-	console.log(plantID);
 	recordPlantAdded(pName, 0);
 	console.log(pName);
 
@@ -171,6 +170,7 @@ function savePlant() {
 	// Add it to the page
 	$(document).ready(function() {
 		addPlantFromStorage(plantID, pName, 0);
+		$('#addMyGardenPlantModal').modal('hide');
 	})
 
 
@@ -194,7 +194,6 @@ function savePlant() {
 	var savedHTML = list.innerHTML;
 	sessionStorage.setItem('myGardenEntries', savedHTML);
 	*/
-	$('#addMyGardenPlantModal').modal('hide');
 }
 
 /*
