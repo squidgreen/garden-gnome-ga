@@ -55,12 +55,12 @@ function addPlantFromStorage(plantID, plantName, wateringFrequency) {
 	// The Image
 	var thumbnail = document.createElement('img');
 	thumbnail.id = "myGardenPlantImg-" + plantID;
-	console.log("addPlantFromStorage: Getting " + "myGardenPlantImg-" + plantID);
+//	console.log("addPlantFromStorage: Getting " + "myGardenPlantImg-" + plantID);
 	imgFile = sessionStorage.getItem('myGardenPlantImg-' + plantID);
 	if (imgFile) {
 		thumbnail.src = imgFile;
 	} else {
-		console.log(imgFile);
+	//	console.log(imgFile);
 		thumbnail.src = 'image/sunflower.jpg';
 	}
 
@@ -118,29 +118,23 @@ function addPlantFromStorage(plantID, plantName, wateringFrequency) {
  * change via the id of the current input element.
  */
 function changeThumbnail(event) {
-	// var browseFileInputID = "selectPlantImgBtn-" + plantID;
-//	var newImage = document.getElementById()
-	console.log(event);
-	console.log(event.target.id);
-	console.log(event.target.value);
-
 	var plantID = event.target.id[event.target.id.length - 1];
 
 	if (window.File && window.FileReader && window.FileList && window.Blob) {
 		var files = event.target.files;
 		var thumbnail = document.getElementById("myGardenPlantImg-" + plantID);
-		console.log(files[0]);
+//		console.log(files[0]);
 		//thumbnail.src = files[0];
 		var reader = new FileReader();
 		reader.addEventListener('load', (function (fileObj) {
 			thumbnail.src = reader.result;	// result contains the file's data as a base64 encoded string
 			sessionStorage.setItem('myGardenPlantImg-' + plantID, reader.result);
-			console.log("changeThumbnail: setting myGardenPlantImg-" + plantID);// sessionStorage.getItem('myGardenPlantImg-' + plantID));
+//			console.log("changeThumbnail: setting myGardenPlantImg-" + plantID);// sessionStorage.getItem('myGardenPlantImg-' + plantID));
 //	thumbnail.src = sessionStorage.getItem('myGardenPlantImg-' + plantID') //window.createObjectURL(imgFile);	// TODO work in progress - assume we can save the file as html in sessionStorage
 		}), false);
 		reader.readAsDataURL(files[0]);
 	} else {
-		console.log("file input not supported???");
+		console.log("ERROR: file input not supported???");
 	}
 }
 
@@ -160,11 +154,11 @@ function savePlant() {
 		var reader = new FileReader();
 		reader.addEventListener('load', (function (fileObj) {
 			sessionStorage.setItem('myGardenPlantImg-' + plantID, reader.result);
-			console.log("savePlant: setting myGardenPlantImg-" + plantID);// sessionStorage.getItem('myGardenPlantImg-' + plantID));
+			//console.log("savePlant: setting myGardenPlantImg-" + plantID);// sessionStorage.getItem('myGardenPlantImg-' + plantID));
 		}), false);
 		reader.readAsDataURL(files[0]);
 	} else {
-		console.log("file input not supported???");
+		console.log("ERROR: file input not supported???");
 	}
 
 	// Add it to the page
