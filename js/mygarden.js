@@ -58,7 +58,7 @@ function addPlantFromStorage(plantID, plantName, wateringFrequency, imgFile) {
 	// The Image
 	var thumbnail = document.createElement('img');
 	thumbnail.id = "myGardenPlantPic-" + plantID;
-//	thumbnail.src = window.createObjectURL(imgFile);	// TODO work in progress - assume we can save the file as html in sessionStorage
+//	thumbnail.src = sessionStorage.getItem('myGardenPlantImg-' + plantID') //window.createObjectURL(imgFile);	// TODO work in progress - assume we can save the file as html in sessionStorage
 	//thumbnail.addEventListener('click', chooseImageFile);
 
 	// Image input field
@@ -67,7 +67,7 @@ function addPlantFromStorage(plantID, plantName, wateringFrequency, imgFile) {
 	plantPicInput.type = "file";
 	plantPicInput.id = browseFileInputID;
 	plantPicInput.name = browseFileInputID;
-	plantPicInput.classList.add('plantFileInputFields');
+	plantPicInput.classList.add('plantFileInputField');
 	var plantPicInputDecoyBtn = document.createElement('button');
 	plantPicInputDecoyBtn.type = "button";
 	plantPicInputDecoyBtn.classList.add('fileInputDecoyBtn');
@@ -119,17 +119,20 @@ function changeThumbnail(event) {
 	console.log(event.target.id);
 	console.log(event.target.value);
 
-	var elementIDNum = event.target.id[event.target.id.length - 1];
+	var plantID = event.target.id[event.target.id.length - 1];
 
 	if (window.File && window.FileReader && window.FileList && window.Blob) {
 		var files = event.target.files;
-		var thumbnail =  document.getElementById("myGardenPlantPic-" + elementIDNum);
+		var thumbnail =  document.getElementById("myGardenPlantPic-" + plantID);
 		console.log(files[0]);
 		//thumbnail.src = files[0];
 		var reader = new FileReader();
-		reader.onload(function (fileObj) {
-
-		})
+		reader.addEventListener('load', (function (fileObj) {
+			thumbnail.src = reader.result;	// result contains the file's data as a base64 encoded string
+			sessionStorage.setItem('myGardenPlantImg-' + plantID, reader.result);
+//	thumbnail.src = sessionStorage.getItem('myGardenPlantImg-' + plantID') //window.createObjectURL(imgFile);	// TODO work in progress - assume we can save the file as html in sessionStorage
+		}), false);
+		reader.readAsDataURL(files[0]);
 	} else {
 		console.log("file input not supported???");
 	}
