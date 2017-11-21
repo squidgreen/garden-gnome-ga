@@ -62,11 +62,6 @@ function addPlantFromStorage(plantID, plantName, wateringFrequency, imgFile) {
 	thumbnail.addEventListener('click', chooseImageFile);
 
 	// Image input field
-	/*
-	var plantPicInputLabel = document.createElement('label');
-	plantPicInputLabel.for = "myGardenImgInput-" + plantID;
-	plantPicInputLabel.appendChild(document.createTextNode('Change Image'));
-	*/
 	var browseFileInputID = "selectPlantImgBtn-" + plantID;
 	var plantPicInput = document.createElement('input');
 	plantPicInput.type = "file";

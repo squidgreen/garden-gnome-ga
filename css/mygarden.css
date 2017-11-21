@@ -1,3 +1,10 @@
+ul {
+  list-style: none;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 li {
   font-size: 0.8em;
 }
@@ -23,7 +30,9 @@ img {
 
 .plantInfoRightContent {
 /*  float: right;*/
-  width: 50%;
+  width: 90%;
+  margin: auto;
+  text-align: center;
 }
 
 input[type="file"] {
@@ -33,4 +42,5 @@ input[type="file"] {
 
 .fileInputDecoyBtn {
   font-size: 0.4em;
+  padding: 0.4em;
 }
