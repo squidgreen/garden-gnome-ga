@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow');
+
+body {
+
+}
+
+li {
+  font-size: 20px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+p {
+  font-size: 30px;
+}
+
+#addPlantbtn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+#addWateringReminderBtn {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+}
+
+form {
+  font-size: 1em;
+}
+
+.col {
+  border: 1px solid rgb(98, 186, 124);
+  border-radius: 5px;
+}
+
+.heading {
+  top: 0;
+  position: fixed;
+  z-index: 1;
+  background-color: rgb(98, 186, 124);
+  /*    border-bottom-left-radius: 0.5em; uncomment to round the bottom edges of header
+  border-bottom-right-radius: 0.5em;*/
+  color: white;
+  /*    -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 0.5px; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  /*  color: rgb(98, 186, 124);*/
+  font-family: 'Barlow', sans-serif;
+  text-align: center;
+}
+
+#calendar {
+  font-family: 'Barlow', sans-serif;
+/*  padding-top: 38%;*/
+}
+
+#calendar > div > ul {
+  font-size: 0.7em;
+  color: rgb(153, 102, 204);
+}
+
+#deleteRemindersTrashIcon {
+  display: none;
+  font-size: 0.8em;
+  color: white;
+}
+
+/*div > div + div {
+  margin-top: 5px;
+}
+*/
+
+#calendar {
+  margin-top: 120px;
+}
+
+.container {
+}
+
+#calendarContainer {
+  margin-top: 10em;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  text-align: center;
+  position: relative;
+  z-index: 4;
+}
+
+/*
+#deleteRemindersTrashIcon:hover + .tooltiptext {
+  visibility: visible;
+}
+*/
+
+/*
+# weekly break
+*/
+
+hr.styleBr {
+  margin-top: 1em;
+  height: 30px;
+  border-style: solid;
+  border-color: #8c8b8b;
+  border-width: 1px 0 0 0;
+  border-radius: 20px;
+  border-color: green;
+}
+
+hr.styleBr:before {
+  display: block;
+  content: "";
+  height: 30px;
+  margin-top: -31px;
+  border-style: solid;
+  border-color: #8c8b8b;
+  border-width: 0 0 1px 0;
+  border-radius: 20px;
+}

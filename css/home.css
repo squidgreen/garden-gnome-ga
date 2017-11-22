@@ -1,0 +1,71 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#menu_button_home {
+  color: green;
+  background-color: white;
+  border-color: green;
+  float: right;
+}
+
+#home_title {
+  text-align: justify;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.container {
+  font-size: 30px;
+}
+
+div[class*="col-4"] {
+  border: 3px solid green;
+  border-right-style: none;
+}
+
+div[class*="col-8"] {
+  border: 3px solid green;
+}
+
+div[class*="col-"] {
+  text-align: left;
+  border-bottom-style: none;
+}
+
+.container > .row:last-of-type {
+  text-align: left;
+  border-bottom: 3px solid green;
+}
+
+.column {
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1.6rem;
+  }
+}
+
+.locationPicThumbnail {
+  height: 150px;
+  width: 150px;
+}
+
+li {
+  border: 0.5px solid green;
+}

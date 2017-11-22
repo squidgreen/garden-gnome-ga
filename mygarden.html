@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+	<head>
+<style>
+table, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td{
+	padding: 15px;
+	text-align: left;
+	vertical-align: top;
+}
+</style>
+		<title>My Garden</title>
+		<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+		<link href="css/menu.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/home.css">
+		<link rel="stylesheet" href="css/mygarden.css">
+	</head>
+	<body>
+
+		<h2 style="text-align:center;background-color: rgb(98, 186, 124);color:white;">My Garden</h2>
+
+
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="watercalendar.html">Water Calendar</a>
+			<a href="mygarden.html">My Garden</a>
+			<a href="index.html">Sign out</a>
+		</div>
+
+
+	<span style="font-size:30px;cursor:pointer;position:absolute;top:0;right:0;color:white;" onclick="openNav()">&#9776;</span>
+
+	<!-- <table style="width:100%;margin-top:50px;">
+		<tr>
+			<td width="10%"><img width="200" height="200" src="image/tulips.jpg" alt="Tulips"></td>
+			<td width="90%">
+				<span style="margin-top:0px;margin-left:20px;font-size:50px">TULIP</span>
+				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
+			</td>
+		</tr>
+		<tr>
+			<td width="10%"><img width="200" height="200" src="image/AppleTree.jpg" alt="Apples"></td>
+			<td width="90%">
+				<span style="margin-top:0px;margin-left:20px;font-size:50px;">FUJI APPLE</span>
+				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
+				<br><span style="margin-top:0px;margin-left:20px;font-size:50px;">GRANNY SMITH</span>
+				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
+
+				<br><span style="margin-top:0px;margin-left:20px;font-size:50px;">RED DELICIOUS</span>
+				<button id="showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
+
+			</td>
+		</tr>
+		<tr>
+			<td width="10%"><img width="200" height="200" src="image/Orchid.jpg" alt="Orchids"></td>
+			<td width="90%">
+				<a style="font-size:50px;margin-top:0px;margin-left:20px;" href="mygardenbio.html">Orchid</a>
+				<button id="#showLocation" class="btn btn-primary" data-toggle="modal" data-target="#location" style="font-size:30px;border-style:solid;position:absolute;right:5%;">Location</button>
+			</td>
+		</tr>
+
+
+	</table> -->
+
+		<div>
+			<ul id="pEntry" style="font-size:40px; border: 1px solid black"></ul>
+		</div>
+
+
+		<button id="#addMyGardenPlant" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addMyGardenPlantModal" style="position:absolute;right:20px;margin-top:10px;font-size:20px;margin-bottom:20px;">
+			Add Plant
+		</button>
+
+    <!-- Modal -->
+    <!-- TODO role and other aria attributes -->
+    <div class="modal fade" id="addMyGardenPlantModal" tabindex="-1" role="dialog" aria-labelledby="addMyGardenModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <!-- Begin modal content -->
+          <div class="modal-header">
+            <h5 class="modal-title">Add a new plant</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Form for adding new plant watering reminder -->
+            <div class="container">
+              <form action="mygarden.html" method="post">
+                <div class="form-group">
+                  <label for="plantNameMyGardenModalEntry">Plant name</label>
+                  <input type="text" class="form-control" name="plantName" id="plantNameMyGardenModalEntry" aria-describedby="plantName" placeholder="Enter name" />
+                </div>
+								<div class="form-group">
+									<label for="plantLocationMyGarden" style="font-size:14px;">
+										<span style="font-size:14px;">Upload a picture of your plant or its location (optional)</span>
+										<br />
+									</label>
+									<!--<input type="text" class="form-control" name="plantLocation" id="plantLocMyGardenModalEntry" aria-describedby="plantLoc" placeholder="Enter a location in your yard" /> -->
+									<input class="form-control" style="font-size:16px; border: 1px solid green;" type="file" id="locationPicker" onchange="uploadPic()">
+								</div>
+
+                <div class="">
+                  <button id="savePlantButton" type="button" class="btn btn-success">Save</button>
+                  <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- End modal content -->
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="location" tabindex="-1" role="dialog" aria-labelledby="addMyGardenModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <!-- Begin modal content -->
+          <!--<h1>Near dog house</h1> -->
+          <!-- End modal content -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+		<script src="js/menu.js"></script>
+		<script src="js/mygarden.js"></script>
+
+	</body>
+</html>
