@@ -156,7 +156,9 @@ function savePlant() {
 			sessionStorage.setItem('myGardenPlantImg-' + plantID, reader.result);
 			//console.log("savePlant: setting myGardenPlantImg-" + plantID);// sessionStorage.getItem('myGardenPlantImg-' + plantID));
 		}), false);
-		reader.readAsDataURL(files[0]);
+		if (files.length != 0) {
+			reader.readAsDataURL(files[0]);
+		}
 	} else {
 		console.log("ERROR: file input not supported???");
 	}
