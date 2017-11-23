@@ -1,6 +1,9 @@
 var wc = {}; // global variable access
 wc.month = new Date().getMonth();
 document.getElementById('submitReminderFormBtn').addEventListener('click', eatWaterReminderInput);
+document.getElementById('deleteRemindersTrashIcon').addEventListener('click', function() {
+  tracker.send('event', 'show delete option', 'click');
+})
 
 /**
  * Display information entered into the plant reminder modal on the calendar.
@@ -205,8 +208,8 @@ function addRemovalListeners() {
 		var element = document.createElement('hr');
 		element.className = "styleBr";
 		strongClone = strongElem.cloneNode();
-		strongClone.appendChild(element); 
-		
+		strongClone.appendChild(element);
+
 		divClone = newDateEntryDivElem.cloneNode();
 
 		divClone.appendChild(strongClone);
