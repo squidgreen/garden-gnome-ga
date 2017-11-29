@@ -2,6 +2,7 @@ var wc = {}; // global variable access
 wc.month = new Date().getMonth();
 document.getElementById('submitReminderFormBtn').addEventListener('click', eatWaterReminderInput);
 document.getElementById('deleteRemindersTrashIcon').addEventListener('click', function() {
+  tracker = ga.getAll()[0];
   tracker.send('event', 'show delete option', 'click');
 })
 
